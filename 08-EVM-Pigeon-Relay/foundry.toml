@@ -1,0 +1,10 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+
+fs_permissions = [{ access = 'read-write', path = '/'}]
+evm_version = "prague"
+
+[rpc_endpoints]
+mainnet = "${MAINNET_RPC}"

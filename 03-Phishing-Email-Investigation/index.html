@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Preview: Mandatory Training</title>
+    <!-- Google Fonts for a professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f7fafc;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Main container that simulates an email window */
+        .email-container {
+            width: 100%;
+            max-width: 48rem; /* 768px */
+            margin: auto;
+            background-color: #ffffff;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 0.5rem; /* 8px */
+            overflow: hidden;
+        }
+
+        /* Email Header Section */
+        .email-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .email-header h1 {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 700;
+            color: #2d3748;
+            margin: 0 0 0.75rem 0;
+        }
+
+        .sender-info {
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem; /* 14px */
+            color: #718096;
+        }
+
+        .sender-icon {
+            width: 2.5rem; /* 40px */
+            height: 2.5rem; /* 40px */
+            background-color: #2b6cb0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            margin-right: 0.75rem; /* 12px */
+            flex-shrink: 0;
+        }
+
+        .sender-details {
+            flex-grow: 1;
+        }
+
+        .sender-details p {
+            margin: 0;
+        }
+
+        .sender-name {
+            font-weight: 600;
+            color: #1a202c;
+        }
+
+        .sender-email {
+            font-weight: 400;
+            color: #718096;
+        }
+
+        .email-date {
+            margin-left: auto;
+            font-size: 0.75rem; /* 12px */
+            text-align: right;
+            white-space: nowrap;
+            padding-left: 0.5rem;
+        }
+        
+        /* Email Body Section */
+        .email-body {
+            padding: 2rem;
+            color: #2d3748;
+            line-height: 1.6;
+            font-size: 1rem; /* 16px */
+        }
+
+        .email-body .logo {
+            height: 2.25rem; /* 36px */
+            margin-bottom: 2rem;
+        }
+
+        .email-body h2 {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+
+        .email-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Highlighted Action Box */
+        .action-box {
+            background-color: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .action-box h3 {
+            font-size: 1.125rem; /* 18px */
+            font-weight: 600;
+            color: #1a202c;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .action-box p {
+             margin-bottom: 1rem;
+        }
+
+        .action-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+        
+        .action-box ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .action-box .deadline {
+            color: #e53e3e;
+            font-weight: 700;
+        }
+
+        .action-box .notice {
+            font-size: 0.875rem; /* 14px */
+            color: #4a5568;
+            margin-bottom: 0;
+        }
+
+        /* Call to Action Button */
+        .cta-button-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .cta-button {
+            background-color: #3182ce;
+            color: white;
+            font-weight: 700;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            display: inline-block;
+            font-size: 1.125rem; /* 18px */
+        }
+
+        .cta-button:hover {
+            background-color: #2b6cb0;
+        }
+
+        /* Signature and Footer */
+        .signature {
+            margin-top: 2rem;
+        }
+        .signature p {
+            margin: 0.25rem 0;
+        }
+
+        .signature .team-name {
+            font-size: 0.875rem; /* 14px */
+            color: #4a5568;
+        }
+
+        .email-footer {
+            margin-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.75rem; /* 12px */
+            color: #8894a5;
+        }
+
+        .email-footer p {
+            margin: 0.25rem 0;
+        }
+
+        .email-footer a {
+            color: #3182ce;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        .email-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive styles for smaller screens */
+        @media (max-width: 640px) {
+            body {
+                padding: 0.5rem;
+            }
+            .email-header, .email-body {
+                padding: 1rem;
+            }
+            .email-header h1 {
+                font-size: 1.25rem;
+            }
+            .cta-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="email-container">
+        
+        <header class="email-header">
+            <h1>URGENT: Action Required - Mandatory 2025 Security Compliance Training</h1>
+            <div class="sender-info">
+                <div class="sender-icon">C</div>
+                <div class="sender-details">
+                    <p class="sender-name">Cisco Learning & Development <span class="sender-email">&lt;noreply@cisco-learning.net&gt;</span></p>
+                    <p>to me</p>
+                </div>
+                <div class="email-date">Oct 12, 2025, 9:15 AM</div>
+            </div>
+        </header>
+
+        <main class="email-body">
+
+            <img src="./ctf.png" style="width: 56vw; height: auto;" alt="Cisco Logo" class="logo">
+
+            <h2>Mandatory Security Training Update</h2>
+            
+            <p><strong>Dear Certified Professional,</strong></p>
+            
+            <p>As part of our ongoing commitment to global security standards and protecting our certified community, Cisco has released a mandatory Security Compliance Training module for 2025. This updated module covers critical new threat vectors and mitigation strategies identified in the last quarter.</p>
+
+            <div class="action-box">
+                <h3>Action Required</h3>
+                <p>All Cisco certified individuals are required to complete this training to ensure their credentials remain active and compliant with our new partner requirements.</p>
+                <ul>
+                    <li><strong>Course:</strong> 2025 Advanced Security & Threat Mitigation (ASTM)</li>
+                    <li><strong>Estimated Time:</strong> 15 Minutes</li>
+                    <li><strong>Deadline:</strong> <span class="deadline">October 15, 2025</span></li>
+                </ul>
+                <p class="notice">Failure to complete this mandatory training by the specified deadline will result in the temporary suspension of your certification status, pending a manual review.</p>
+            </div>
+
+            <p>To avoid any disruption to your certified status, please access the learning portal and complete the module at your earliest convenience.</p>
+
+            <div class="cta-button-container">
+                <a href="#" class="cta-button">Access Your Mandatory Training Module</a>
+                <div style="display: none;">flag{h1dd3n_1n_pl41n_s1ght}</div>
+            </div>
+
+            <p>Thank you for your immediate attention to this critical matter and for helping us maintain a secure and trusted ecosystem.</p>
+            <span>  </span>
+
+            <div class="signature">
+                <p><strong>Sincerely,</strong></p>
+                <p>The Cisco Learning & Development Team</p>
+                <p class="team-name">Global Certification & Compliance Wing</p>
+            </div>
+
+            <footer class="email-footer">
+                <p>© 2025 Cisco Systems, Inc. and/or its affiliates. All rights reserved.</p>
+                <p>This is an automated notification. Please do not reply to this email.</p>
+                <a href="#">Unsubscribe from future notifications</a>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
+

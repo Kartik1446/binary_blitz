@@ -1,0 +1,20 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+ignored_error_codes = [2394]
+ignored_warnings_from = ["test", "script", "lib"]
+fs_permissions = [{ access = 'read-write', path = '/' }]
+remappings = [
+    "forge-std/=lib/forge-std/src/",
+    "ds-test/=lib/forge-std/lib/ds-test/src/",
+    "forge-ctf/=lib/paradigm-ctf-infrastructure/forge-ctf/src/",
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "foundry-huff/=lib/foundry-huff/src/",
+]
+
+[lint]
+exclude_lints = ["mixed-case-variable"]
+ignore = ["test/**/*", "src/CreateX.sol", "lib/**/*"]
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
